@@ -3,7 +3,19 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const TicketForm = () => {
+const TicketForm = ({ ticket }) => {
+  const startingTicketData = {
+    title: "",
+    description: "",
+    category: "",
+    priority: 1,
+    progress: 0,
+    status: "",
+    active: Boolean,
+  };
+
+  const [formData, setFormData] = useState(startingTicketData);
+
   const EDITMODE = ticket._id === "new" ? false : true;
 
   const router = useRouter();
@@ -27,30 +39,22 @@ const TicketForm = () => {
         body: JSON.stringify({ formData }),
         "content-type": "application/json",
       });
+      if (!res.ok) {
+        throw new Error("failed to update a ticket");
+      }
     } else {
-      const res = await fetch("/api/Tickets", {
+      const res = await fetch("/api/Tickets/", {
         method: "POST",
         body: JSON.stringify({ formData }),
         "content-type": "application/json",
       });
+      if (!res.ok) {
+        throw new Error("failed to create a ticket");
+      }
     }
 
     router.refresh();
     router.push("/");
-
-    if (!res.ok) {
-      throw new Error("failed to create a ticket");
-    }
-  };
-
-  const startingTicketData = {
-    title: "",
-    description: "",
-    category: "",
-    priority: 1,
-    progress: 0,
-    status: "",
-    active: Boolean,
   };
 
   if (EDITMODE) {
@@ -61,8 +65,6 @@ const TicketForm = () => {
     startingTicketData["progress"] = ticket.progress;
     startingTicketData["status"] = ticket.status;
   }
-
-  const [formData, setFormData] = useState(startingTicketData);
 
   return (
     <div className="flex justify-center">
