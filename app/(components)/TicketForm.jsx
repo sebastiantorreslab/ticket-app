@@ -154,7 +154,7 @@ const TicketForm = () => {
         </div>
         <label>Progress</label>
         <input
-          type={range}
+          type="range"
           id="progress"
           name="progress"
           value={formData.progress}
