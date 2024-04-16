@@ -3,10 +3,10 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, { params }) {
   try {
-    const id = { params };
+    const { id } = params;
     const foundTicket = await Ticket.findOne({ _id: id });
 
-    return NextResponse.json({ message: { foundTicket } }, { status: 200 });
+    return NextResponse.json({foundTicket}, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: "Error", error }, { status: 500 });
   }
@@ -14,7 +14,7 @@ export async function GET(req, { params }) {
 
 export async function DELETE(req, { params }) {
   try {
-    const {id} =  params ;
+    const { id } = params;
     await Ticket.findByIdAndDelete(id);
     return NextResponse.json({ message: "Ticket deleted" }, { status: 200 });
   } catch (error) {
@@ -31,10 +31,7 @@ export async function PUT(req, { params }) {
       ...ticketData,
     });
 
-    return NextResponse.json(
-      { message: { updateTicketData } },
-      { status: 200 }
-    );
+    return NextResponse.json({ message: "Ticket updated" }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: "Error", error }, { status: 500 });
   }
