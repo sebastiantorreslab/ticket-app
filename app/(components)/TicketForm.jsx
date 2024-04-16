@@ -10,7 +10,7 @@ const TicketForm = ({ ticket }) => {
     category: "",
     priority: 1,
     progress: 0,
-    status: "",
+    status: "not started",
     active: Boolean,
   };
 
@@ -89,7 +89,7 @@ const TicketForm = ({ ticket }) => {
           onChange={handleChange}
           required={true}
           value={formData.description}
-          rows={5}
+          rows="5"
         />
         <label>Category</label>
         <select
@@ -99,7 +99,7 @@ const TicketForm = ({ ticket }) => {
         >
           <option value="Hardware problem">Hardware problem</option>
           <option value="Software problem">Software problem</option>
-          <option value="Project">Hardware problem</option>
+          <option value="Project">Project</option>
         </select>
         <label>Priority</label>
         <div>
@@ -125,16 +125,6 @@ const TicketForm = ({ ticket }) => {
           <label>2</label>
 
           <input
-            id="priority-2"
-            name="priority"
-            type="radio"
-            onChange={handleChange}
-            value={2}
-            checked={formData.priority == 2}
-          />
-          <label>3</label>
-
-          <input
             id="priority-3"
             name="priority"
             type="radio"
@@ -142,7 +132,7 @@ const TicketForm = ({ ticket }) => {
             value={3}
             checked={formData.priority == 3}
           />
-          <label>4</label>
+          <label>3</label>
 
           <input
             id="priority-4"
@@ -151,6 +141,16 @@ const TicketForm = ({ ticket }) => {
             onChange={handleChange}
             value={4}
             checked={formData.priority == 4}
+          />
+          <label>4</label>
+
+          <input
+            id="priority-5"
+            name="priority"
+            type="radio"
+            onChange={handleChange}
+            value={5}
+            checked={formData.priority == 5}
           />
           <label>5</label>
         </div>
