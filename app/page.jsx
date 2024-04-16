@@ -12,8 +12,8 @@ const getTickets = async () => {
   }
 };
 
-const Deashboard = () => {
-  const { tickets } = getTickets();
+const Deashboard = async () => {
+  const { tickets } = await getTickets();
 
   const uniqueCategories = [
     ...new Set(tickets?.map(({ category }) => category)),
