@@ -1,4 +1,4 @@
-import { MONGO_CLIENT_EVENTS } from "mongodb";
+
 import mongoose, { Schema } from "mongoose";
 
 mongoose.connect(process.env.MONGODB_URI);

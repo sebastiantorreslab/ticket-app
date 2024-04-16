@@ -1,6 +1,7 @@
 import React from "react";
 
 const StatusDisplay = ({ status }) => {
+  
   const getColor = (status) => {
     let color = "bg-slate-700";
     switch (status.toLowerCase()) {

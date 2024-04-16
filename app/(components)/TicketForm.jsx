@@ -7,7 +7,7 @@ const TicketForm = ({ ticket }) => {
   const startingTicketData = {
     title: "",
     description: "",
-    category: "",
+    category: "Hardware problem",
     priority: 1,
     progress: 0,
     status: "not started",
