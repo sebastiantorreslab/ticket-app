@@ -10,7 +10,7 @@ const TicketForm = ({ ticket }) => {
     category: "Hardware problem",
     priority: 1,
     progress: 0,
-    status: "not started",
+    status: "not started", 
     active: Boolean,
   };
 
